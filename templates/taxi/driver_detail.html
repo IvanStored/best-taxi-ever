@@ -7,7 +7,7 @@
     <div class="card mb-4">
       <div class="card-body text-center">
         <img src="{% static driver.avatar.url %}" alt="avatar"
-          class="card-img-top" >
+          class="card-img-top" style="width: 50%">
         <h2 class="my-3">{% if user.id == driver.id %}
           Hello,
           {% endif %}{{ driver.username}}

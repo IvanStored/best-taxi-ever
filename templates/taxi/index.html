@@ -15,10 +15,9 @@
     <div class="card h-100">
       <img src="/static/images/cars.jpg" class="card-img-top" alt="Skyscrapers"/>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">Cars</h5>
         <p class="card-text">
-          This is a wider card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
+          There are {{ num_cars }} cars in our collection, all very cool and fast.
         </p>
       </div>
       <div class="card-footer">
@@ -30,8 +29,10 @@
     <div class="card h-100">
       <img src="/static/images/manufacturers.png" class="card-img-top" alt="Los Angeles Skyscrapers"/>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <h5 class="card-title">Manufacturers</h5>
+        <p class="card-text">
+          All famous manufacturers on our site. Everyone from {{ num_manufacturers }} has at least one car(except for Volskwagen and FCA)
+        </p>
       </div>
       <div class="card-footer">
         <a href="{% url 'taxi:manufacturer-list' %}" class="btn btn-info">To manufacturers <i class="fas fa-industry"></i></a>
@@ -42,11 +43,9 @@
     <div class="card h-100">
       <img src="/static/images/drivers.jpg" class="card-img-top" alt="Palm Springs Road"/>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">Drivers</h5>
         <p class="card-text">
-          This is a wider card with supporting text below as a natural lead-in to
-          additional content. This card has even longer content than the first to show
-          that equal height action.
+          All our {{ num_drivers }} drivers are professional and know their business, you can view and rate them.
         </p>
       </div>
       <div class="card-footer">
