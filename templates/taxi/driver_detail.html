@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load ratings%}
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card mb-4">
+      <div class="card-body text-center">
+        <img src="{% static driver.avatar.url %}" alt="avatar"
+          class="card-img-top" >
+        <h2 class="my-3">{% if user.id == driver.id %}
+          Hello,
+          {% endif %}{{ driver.username}}
+        </h2>
+        {% if user.is_superuser %}
+        <div class="d-flex justify-content-center mb-2">
+          <a href="{% url 'taxi:driver-settings' slug=driver.slug%}" class="btn btn-primary">Update information <i class="far fa-edit"></i></a>
+          {% if not driver.is_superuser %}
+          <a class="btn btn-danger" data-mdb-toggle="modal" data-mdb-target="#delete{{ driver.id }}">
+          Delete driver <i class="fas fa-trash-alt"></i>
+          </a>
+          {% include "taxi/driver_confirm_delete.html" %}
+          {% endif %}
+        </div>
+        {% elif driver.id == user.id %}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+        Test Superuser
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Lol</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="/static/images/rick-roll.gif" height="480" width="450">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">:)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% ratings object %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">First Name</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">
+              {% if driver.first_name %}
+              {{ driver.first_name }}
+              {% else %}
+              We don't know :(
+              {% endif %}
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Last Name</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">
+              {% if driver.last_name %}
+              {{ driver.last_name }}
+              {% else %}
+              We don't know :(
+              {% endif %}
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Email</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">
+              {% if driver.email %}
+              {{ driver.email }}
+              {% else %}
+              We don't know :(
+              {% endif %}
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">License number</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">{{ driver.license_number}}
+              {% if user.id == driver.id  or user.is_superuser%}
+              <a href="{% url 'taxi:driver-update' slug=driver.slug%}"><i class="bi bi-pencil-square"></i></a>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if driver.cars.count != 0 %}
+  <table class="table table-strip table-bordered bg-white">
+    <h3>Cars</h3>
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">Model</th>
+        <th scope="col">Country</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for car in driver.cars.all %}
+    <tbody >
+      <tr>
+        <td>{{ car.model }}</td>
+        <td>{{ car.manufacturer.country }}</td>
+        <td class="text-center">
+          <a href="{{car.get_absolute_url}}" class="btn btn-info btn-rounded">
+          More<i class="bi bi-three-dots-vertical"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  {% else %}
+  <div class="note note-danger mb-0">
+    <strong>Oops!:</strong> Driver doesn't have cars
+  </div>
+  {% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

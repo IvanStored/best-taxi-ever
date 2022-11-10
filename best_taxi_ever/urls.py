@@ -20,5 +20,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
-    path("", include("taxi.urls", namespace="taxi"))
+    path("", include("taxi.urls", namespace="taxi")),
+    path("ratings/", include('star_ratings.urls', namespace="ratings"))
 ]

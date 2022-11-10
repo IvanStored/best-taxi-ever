@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+<h1>Driver List
+  {% if request.user.is_staff %}
+  <a href="{% url 'taxi:driver-create' %}" class="btn btn-success link-to-page">
+  Add new driver <i class="fas fa-plus"></i></a>
+  {% endif %}
+</h1>
+<form action="" class="mb-4">
+  <div class="input-group">
+    <div class="form-outline bg-white">
+      {{ search_form.username|as_crispy_field }}
+    </div>
+    <button type="submit" class="btn btn-primary">
+    <i class="fas fa-search"></i>
+    </button>
+  </div>
+</form>
+{% if driver_list %}
+<table class="table align-middle mb-0 bg-white">
+  <thead class="table-primary">
+    <tr>
+      <th>Name</th>
+      <th class="text-center">Number of cars</th>
+      <th></th>
+    </tr>
+    {% for driver in driver_list %}
+  <tbody>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+            src=" {{ driver.avatar.url }}"
+            alt=""
+            style="width: 45px; height: 45px"
+            class="rounded-circle"
+            />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{ driver.username }}</p>
+            <p class="text-muted mb-0">{{ driver.email}}</p>
+          </div>
+        </div>
+      </td>
+      <td class="text-center">
+        <h4><span class="badge badge-primary">{{ driver.cars.count }}</span></h4>
+      </td>
+      <td class="text-center">
+        <a href="{{ driver.get_absolute_url }}" class="btn btn-link btn-sm btn-rounded">
+        Go to profile <i class="fas fa-user"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% else %}
+<div class="note note-danger mb-0">
+  <strong>Oops!:</strong> Nothing here
+</div>
+{% endif %}
+{% endblock %}
