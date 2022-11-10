@@ -1,0 +1,41 @@
+{% load crispy_forms_filters %}
+<form action="
+  {% if manufacturer %}
+  {% url 'taxi:manufacturer-update' slug=manufacturer.slug%}
+  {% else %}
+  {% url 'taxi:manufacturer-create' %}
+  {% endif %}
+  " method="post">
+  {% csrf_token %}
+  {% if manufacturer %}
+  <div class="modal fade" id="update{{ manufacturer.id }}"
+    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {% else %}
+  <div class="modal fade" id="create"
+    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {% endif %}
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ manufacturer|yesno:"Update,Add new manufacturer" }}</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3>{{ manufacturer|yesno:"Update,Create" }} {{ manufacturer.name }}</h3>
+          <div class="row mb-4">
+            <div class="col">
+              {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col">
+              {{ form.country|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-{{ manufacturer|yesno:"primary,success" }}">{{ manufacturer|yesno:"Update,Create" }}</button>
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

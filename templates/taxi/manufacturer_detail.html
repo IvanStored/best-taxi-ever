@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="display-4">Manufacturer: {{ manufacturer.name }}
+</h1>
+<p class="lead"><strong>Country: {{ manufacturer.country }}</strong></p>
+<div class="ml-3">
+  <h3>Cars</h3>
+  {% if manufacturer.car_set.count != 0 %}
+  <table class="table table-strip table-bordered bg-white">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">Model</th>
+        <th scope="col" class="text-center">Number of drivers</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for car in manufacturer.car_set.all %}
+    <tbody >
+      <tr>
+        <td>{{ car.model }}</td>
+        <td class="text-center">
+          <h4><span class="badge badge-primary">{{ car.drivers.count }}</span></h4>
+        </td>
+        <td class="text-center">
+          <a href="{{car.get_absolute_url}}" class="btn btn-info btn-rounded">
+          More<i class="bi bi-three-dots-vertical"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  {% else %}
+  <div class="note note-danger mb-0">
+    <strong>Oops!:</strong> Nothing here
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

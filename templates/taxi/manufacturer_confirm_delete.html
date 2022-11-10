@@ -1,0 +1,25 @@
+<div class="modal fade" id="delete{{ manufacturer.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete {{ manufacturer.name }}</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Are you sure you want to delete the manufacturer?</p>
+        {%  if manufacturer.car_set.all %}
+        <div class="note note-danger mb-0">
+          <strong>Warning!</strong> {{ manufacturer.car_set.all.count }} car{{ manufacturer.car_set.all.count|pluralize }} with this manufacturer will be also deleted!</em>
+        </div>
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        <form action="{% url 'taxi:manufacturer-delete' slug=manufacturer.slug%}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Yes, delete</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
