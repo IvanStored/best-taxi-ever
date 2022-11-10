@@ -84,6 +84,7 @@ class Driver(AbstractUser):
     slug = models.SlugField(null=True, blank=True, max_length=100, unique=True)
 
     class Meta:
+        ordering = ["username"]
         verbose_name = "driver"
         verbose_name_plural = "drivers"
 
