@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+<form action="" method="post" novalidate>
+  {% csrf_token %}
+  <h1 class="display-4">{{ object|yesno:"Update,Add" }} car</h1>
+  <div class="row mb-4">
+    <div class="col">
+      {{ form.model|as_crispy_field }}
+    </div>
+    <div class="col">
+      {{ form.manufacturer|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row mb-4">
+    {{ form.drivers|as_crispy_field }}
+  </div>
+  <input class="btn btn-success" type="submit" value="{{ object|yesno:"Update,Create" }}">
+  {% if not object %}
+  <a href="{% url 'taxi:car-list'%}">
+  <input class="btn btn-secondary" value="Cancel">
+  </a>
+  {% else %}
+  <a href="{{ object.get_absolute_url}}">
+  <input class="btn btn-secondary" value="Cancel">
+  </a>
+  {% endif %}
+</form>
+{% endblock %}

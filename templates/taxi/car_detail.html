@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load ratings %}
+{% block content %}
+<h1 class="display-4">Model: {{ car.model }}
+  {% if user.is_superuser %}
+  <a href="{% url 'taxi:car-update' slug=car.slug %}" class="btn btn-info"> Update car
+  <i class="far fa-edit"></i></a>
+  <a href="{% url 'taxi:car-delete' slug=car.slug %}" class="btn btn-danger">Delete car
+  <i class="far fa-trash-alt"></i></a>
+  {% endif %}
+</h1>
+{% ratings object %}
+<p class="lead mt-3"><strong>Manufacturer:
+  <a href="{% url 'taxi:manufacturer-detail' slug=car.manufacturer.slug %}">
+  {{ car.manufacturer.name }}</a></strong>
+</p>
+<p class="lead"><strong>Country: {{ car.manufacturer.country }}</strong></p>
+{% if car.drivers.count != 0 %}
+<div class="ml-3">
+  <table class="table align-middle mb-0 bg-white">
+    <h3>Drivers{% if user in car.drivers.all %}
+      <a href="{% url 'taxi:delete-from-car' slug=car.slug %}" class="btn btn-danger link-to-page">
+      Remove me from this car <i class="fas fa-minus-circle"></i>
+      </a>
+      {% else %}
+      <a href="{% url 'taxi:assign-to-car' slug=car.slug %}" class="btn btn-success link-to-page">
+      Assign me to this car <i class="fas fa-check"></i>
+      </a>
+      {% endif %}
+    </h3>
+    <thead class="table-primary">
+      <tr>
+        <th>Name</th>
+        <th class="text-center">Number of cars</th>
+        <th></th>
+      </tr>
+      {% for driver in car.drivers.all %}
+    <tbody>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              src=" {{ driver.avatar.url }}"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ driver.username }}</p>
+              <p class="text-muted mb-0">{{ driver.email}}</p>
+            </div>
+          </div>
+        </td>
+        <td class="text-center">
+          <h4><span class="badge badge-primary">{{ driver.cars.count }}</span></h4>
+        </td>
+        <td class="text-center">
+          <a href="{{ driver.get_absolute_url }}" class="btn btn-link btn-sm btn-rounded">
+          Go to profile <i class="fas fa-user"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% else %}
+<div class="note note-danger mb-0">
+  <strong>Oops!:</strong> Car doesn't have drivers
+</div>
+{% endif %}
+{% endblock %}
