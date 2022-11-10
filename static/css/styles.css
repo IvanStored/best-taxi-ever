@@ -1,0 +1,17 @@
+body{
+    background: -webkit-linear-gradient(left, #d92355 , #a191f5)
+}
+
+.btn-funky-moon {
+    background: -webkit-linear-gradient(145deg, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+    color: #fff;
+    border: 3px solid #eee;
+}
+.container{
+        margin-top: 98px!important;
+}
+
+.dropdown-menu.show {
+    margin-top: 7px !important;
+    margin-left: 27px !important;
+}
