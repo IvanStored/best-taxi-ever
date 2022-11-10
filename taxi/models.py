@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 from star_ratings.models import Rating
 
 
@@ -32,6 +33,9 @@ class Manufacturer(models.Model):
             using=None,
             update_fields=None,
         )
+
+    def get_absolute_url(self):
+        return reverse("taxi:manufacturer-detail", kwargs={"slug": self.slug})
 
 
 class Car(models.Model):
@@ -64,6 +68,9 @@ class Car(models.Model):
             using=None,
             update_fields=None,
         )
+
+    def get_absolute_url(self):
+        return reverse("taxi:car-detail", kwargs={"slug": self.slug})
 
 
 class Driver(AbstractUser):
@@ -98,3 +105,6 @@ class Driver(AbstractUser):
             using=None,
             update_fields=None,
         )
+
+    def get_absolute_url(self):
+        return reverse("taxi:driver-detail", kwargs={"slug": self.slug})

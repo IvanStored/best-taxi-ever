@@ -1,0 +1,58 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+
+
+
+
+
+<div class="p-5 text-center bg-light">
+    <h1 class="mb-3">Welcome to our Taxi Service!</h1>
+</div>
+  <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/images/cars.jpg" class="card-img-top" alt="Skyscrapers"/>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in to
+          additional content. This content is a little bit longer.
+        </p>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'taxi:car-list' %}" class="btn btn-info">To cars <i class="bi bi-car-front-fill"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/images/manufacturers.png" class="card-img-top" alt="Los Angeles Skyscrapers"/>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'taxi:manufacturer-list' %}" class="btn btn-info">To manufacturers <i class="fas fa-industry"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/images/drivers.jpg" class="card-img-top" alt="Palm Springs Road"/>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in to
+          additional content. This card has even longer content than the first to show
+          that equal height action.
+        </p>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'taxi:driver-list' %}" class="btn btn-info">To drives <i class="fas fa-users"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

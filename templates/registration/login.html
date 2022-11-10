@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body %}
+{% block navbar %}
+{% endblock %}
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase">Welcome to Taxi Service!</h2>
+              {% if form.errors %}
+              <p style="color: red" class="lead"> Please, input correct username/password</p>
+              {% endif %}
+              {% if next %}
+              <p style="color: red" class="lead">Please login to see this page.</p>
+              {% endif %}
+              <div class="form form-white mb-4">
+                <input type="username" class="form-control form-control-lg"  name="username" placeholder="Username"/>
+              </div>
+              <div class="form form-white mb-4">
+                <input type="password" class="form-control form-control-lg" placeholder="Password" name="password"/>
+                <small class="form-text text-muted">We'll never share your password with anyone else.</small>
+              </div>
+              <button class="btn btn-funky-moon btn-lg px-5 text-white" type="submit" style="background: -webkit-linear-gradient(to right, rgba(161,140,209,0.5), rgba(251,194,235,0.5));">Login</button>
+            </div>
+            <div>
+              <p class="mb-0">Don't have an account? <a href="{% url 'taxi:register' %}" class="text-white-50 fw-bold">Sign Up</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

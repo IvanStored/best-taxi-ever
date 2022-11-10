@@ -1,0 +1,64 @@
+{% load lineage %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      >
+    <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <a class="navbar-brand mt-2 mt-lg-0" href="/">
+      The Best Taxi Service Ever
+      </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {% ancestor '/cars/' %}" href="/cars/">Cars <i class="bi bi-car-front-fill"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% ancestor '/manufacturers/' %}" href="/manufacturers/">Manufacturers <i class="fas fa-industry"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% ancestor '/drivers/' %}" href="/drivers/">Drivers <i class="bi bi-people-fill"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a
+        class="nav-link dropdown-toggle d-flex align-items-center hidden-arrow"
+        href="#"
+        id="navbarDropdownMenuAvatar"
+        role="button"
+        data-mdb-toggle="dropdown"
+        aria-expanded="false"
+        >
+      <img src="{{ user.avatar.url }}" alt="" style="width: 40px; height: 40px"
+        class="rounded-circle" /> Hello, {{ user.username }}
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="navbarDropdownMenuAvatar"
+        >
+        <li>
+          <a class="dropdown-item" href="{{ user.get_absolute_url }}">My profile <i class="bi bi-person-fill"></i></a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="{% url 'taxi:driver-settings' slug=user.slug%}">Settings <i class="bi bi-gear"></i></a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="{% url 'taxi:contact' %}">Contact <i class="bi bi-envelope-fill"></i></a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li>
+          <a class="dropdown-item text-danger" href="{% url 'logout' %}">Logout <i class="bi bi-box-arrow-in-right"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</nav>
