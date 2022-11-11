@@ -13,3 +13,4 @@ sweetify==2.3.1
 tzdata==2022.6
 dj_database_url==1.0.0
 psycopg2 == 2.9.5
+whitenoise == 6.2.0
