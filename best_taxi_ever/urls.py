@@ -28,3 +28,5 @@ urlpatterns = [
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
+
+handler404 = "best_taxi_ever.views.page_not_found_view"
