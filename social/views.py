@@ -28,24 +28,24 @@ class CreateThread(LoginRequiredMixin, View):
                 thread = ThreadModel.objects.filter(
                     user=request.user, receiver=receiver
                 )[0]
-                return redirect("thread", pk=thread.pk)
+                return redirect("social:thread", pk=thread.pk)
             elif ThreadModel.objects.filter(
                 user=receiver, receiver=request.user
             ).exists():
                 thread = ThreadModel.objects.filter(
                     user=receiver, receiver=request.user
                 )[0]
-                return redirect("thread", pk=thread.pk)
+                return redirect("social:thread", pk=thread.pk)
             if form.is_valid():
                 sender_thread = ThreadModel(
                     user=request.user, receiver=receiver
                 )
                 sender_thread.save()
                 thread_pk = sender_thread.pk
-                return redirect("thread", pk=thread_pk)
+                return redirect("social:thread", pk=thread_pk)
         except Http404:
             sweetify.error(request, "User doesn`t exist!")
-            return redirect("inbox")
+            return redirect("social:inbox")
 
 
 class ListThreads(LoginRequiredMixin, View):
@@ -73,7 +73,7 @@ class CreateMessage(LoginRequiredMixin, View):
             body=request.POST.get("message"),
         )
         message.save()
-        return redirect("thread", pk=pk)
+        return redirect("social:thread", pk=pk)
 
 
 class ThreadView(LoginRequiredMixin, View):

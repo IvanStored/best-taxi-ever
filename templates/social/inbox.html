@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12 p-5">
+    <h3>Your Conversations</h3>
+  </div>
+</div>
+{% for thread in threads.all %}
+<div class="row mb-3">
+  <div class="col-md-6 mx-auto">
+    <div class="card p-5 shadow-sm align-self-center">
+      <img src="
+        {% if thread.receiver == request.user %}
+        {{ thread.user.avatar.url }}
+        {% else %}
+        {{ thread.receiver.avatar.url }}
+        {% endif %}" alt="avatar"
+        class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+      <h5 class="pt-3" style="text-align: center">
+        {% if thread.receiver == request.user %}
+        Chat with {{ thread.user }}
+        {% else %}
+        Chat with {{ thread.receiver }}
+        {% endif %}
+      </h5>
+      <div style="text-align: center">
+        <a class="btn btn-info" href="{% url 'social:thread' thread.pk %}">Open chat <i class="fas fa-envelope-open"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<div class="row">
+  <div class="col-md-12 p-5 text-center">
+    <a class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#newthread">
+    Start new conversation
+    <i class="fas fa-comments"></i></a>
+    {% include "social/create_thread.html"%}
+  </div>
+</div>
+{% endblock content %}

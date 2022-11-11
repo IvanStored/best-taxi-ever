@@ -24,7 +24,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", include("taxi.urls", namespace="taxi")),
     path("ratings/", include('star_ratings.urls', namespace="ratings")),
-    path("inbox/", include('social.urls', namespace="social"))
+    path("", include('social.urls', namespace="social"))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)

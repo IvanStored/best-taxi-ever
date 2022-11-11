@@ -1,0 +1,22 @@
+{% load crispy_forms_filters %}
+<form method="post" action="{% url 'social:create-thread'%}">
+  <div class="modal fade" id="newthread" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Start a Conversation!</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="lead">Enter the username for the person you would like to talk to.</p>
+          {% csrf_token %}
+          {{ form|crispy }}
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Continue</button>
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
