@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "lineage",
     "sweetify",
-    "star_ratings"
+    "star_ratings",
+    "social"
 ]
 
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
