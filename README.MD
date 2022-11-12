@@ -27,9 +27,9 @@ python manage.py runserver  # starts Django project
 - Rating system for cars and drivers (using django-star-rating)
 - User can upload own avatar
 - Feedback form
+- Direct messages for users
 
 ## In future(maybe):
-- Direct messages for users
 - Comment system for cars
 
 # Demo:
