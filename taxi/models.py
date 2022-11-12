@@ -78,7 +78,6 @@ class Driver(AbstractUser):
         default="default.png",
         null=True,
         blank=True,
-        upload_to=settings.MEDIA_ROOT,
     )
     license_number = models.CharField(max_length=8, unique=True)
     slug = models.SlugField(null=True, blank=True, max_length=100, unique=True)
