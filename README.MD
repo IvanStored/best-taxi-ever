@@ -5,6 +5,13 @@ Django project for for managing cars, manufacturers and drivers.
 ## Check it out
 Link on render -> [Let`s try!](https://best-taxi-ever.onrender.com)
 
+Test User:
+
+```
+Login: urist_22
+
+password: whatbasiciurist
+```
 ## Installation:
 
 
