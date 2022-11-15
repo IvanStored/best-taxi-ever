@@ -37,7 +37,7 @@ class StaffRequiredMixin(SweetifySuccessMixin):
         return super(StaffRequiredMixin, self).get(request, *args, **kwargs)
 
 
-@login_required
+# @login_required
 def index(request):
     """View function for the home page of the site."""
 

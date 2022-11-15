@@ -1,3 +1,4 @@
+{% load static %}
 {% load lineage %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -26,11 +27,14 @@
         <li class="nav-item">
           <a class="nav-link {% ancestor '/drivers/' %}" href="/drivers/">Drivers <i class="bi bi-people-fill"></i></a>
         </li>
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'social:inbox' %}">Check my inbox <i class="fas fa-paper-plane"></i></a>
         </li>
+        {% endif %}
       </ul>
     </div>
+    {% if user.is_authenticated %}
     <div class="dropdown">
       <a
         class="nav-link dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -40,7 +44,7 @@
         data-mdb-toggle="dropdown"
         aria-expanded="false"
         >
-      <img src="{{ user.avatar.url }}" alt="" style="width: 40px; height: 40px"
+      <img src="{% static user.avatar %}" alt="" style="width: 40px; height: 40px"
         class="rounded-circle" /> Hello, {{ user.username }}
       </a>
       <ul
@@ -62,6 +66,8 @@
         </li>
       </ul>
     </div>
+    {% endif %} 
+
   </div>
   </div>
 </nav>
