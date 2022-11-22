@@ -3,8 +3,15 @@
 Django project for for managing cars, manufacturers and drivers.
 
 ## Check it out
-Link on render -> Will be soon
+Link on render -> [Let`s try!](https://best-taxi-ever.onrender.com)
 
+Test User:
+
+```
+Login: urist_22
+
+password: whatbasiciurist
+```
 ## Installation:
 
 
@@ -27,30 +34,42 @@ python manage.py runserver  # starts Django project
 - Rating system for cars and drivers (using django-star-rating)
 - User can upload own avatar
 - Feedback form
+- Direct messages for users
 
 ## In future(maybe):
-- Direct messages for users
 - Comment system for cars
+
+## Bugs:
+- User avatar is not displayed
 
 # Demo:
 ## Home page
-![img.png](img.png)
+![image](https://user-images.githubusercontent.com/43565760/201485185-ffa8a232-b7f3-4b06-be25-f3265a459358.png)
 
 ## Car list
-![img_1.png](img_1.png)
+![image](https://user-images.githubusercontent.com/43565760/201485232-7abfa028-133f-497f-965e-91b265fd16ac.png)
+
 ## Manufacturer list
-![img_2.png](img_2.png)
+![image](https://user-images.githubusercontent.com/43565760/201485245-32686b58-7ba0-4a41-b5a4-1f746c7522a9.png)
+
 ## Driver list
-![img_3.png](img_3.png)
-## Driver profile
-![img_4.png](img_4.png)
-## Car information
-![img_5.png](img_5.png)
+![image](https://user-images.githubusercontent.com/43565760/201485254-6c802d50-a46f-49bf-b4f0-90543b690e09.png)
+
+## Driver profile(Staff)
+![image](https://user-images.githubusercontent.com/43565760/201485281-3a8520fd-ca99-4c75-81b9-56fe054ab83e.png)
+![image](https://user-images.githubusercontent.com/43565760/201485312-60f83ae2-92bb-43b3-bf8d-f9dc9937ecfd.png)
+
+## Driver profile(User)
+![image](https://user-images.githubusercontent.com/43565760/201485530-9edfc75c-eabb-490f-a6e7-840788175e41.png)
+
 ## Manufacturer information
-![img_6.png](img_6.png)
+![image](https://user-images.githubusercontent.com/43565760/201485543-8611169b-bff2-407c-937e-94d55f4f299f.png)
 ## Feedback form
-![img_7.png](img_7.png)
+![image](https://user-images.githubusercontent.com/43565760/201485552-17783a80-e763-4a39-8031-c2c51bf7a1b2.png)
 ## Success 
-![img_8.png](img_8.png)
+![image](https://user-images.githubusercontent.com/43565760/201485579-a5559cf5-70fa-46ca-ab93-9381f9e5a72d.png)
 ## Error message
-![img_9.png](img_9.png)
+![image](https://user-images.githubusercontent.com/43565760/201485608-5657d8c6-146a-499b-ae59-7638ab2ad9ce.png)
+
+## Car detail
+![image](https://user-images.githubusercontent.com/43565760/201485636-38ecf86b-0616-4361-a248-907cb7401582.png)

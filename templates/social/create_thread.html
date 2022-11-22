@@ -1,4 +1,5 @@
 {% load crispy_forms_filters %}
+{% block title %}<title>Create chat</title>{% endblock %}
 <form method="post" action="{% url 'social:create-thread'%}">
   <div class="modal fade" id="newthread" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
