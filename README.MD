@@ -39,8 +39,6 @@ python manage.py runserver  # starts Django project
 ## In future(maybe):
 - Comment system for cars
 
-## Bugs:
-- User avatar is not displayed
 
 # Demo:
 ## Home page
