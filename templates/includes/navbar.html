@@ -44,7 +44,7 @@
         data-mdb-toggle="dropdown"
         aria-expanded="false"
         >
-      <img src="{% static user.avatar %}" alt="" style="width: 40px; height: 40px"
+      <img src="{{ user.avatar.url }}" alt="" style="width: 40px; height: 40px"
         class="rounded-circle" /> Hello, {{ user.username }}
       </a>
       <ul

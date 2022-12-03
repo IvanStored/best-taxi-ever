@@ -1,3 +1,5 @@
+import os
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.contrib.contenttypes.fields import GenericRelation
@@ -5,6 +7,16 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from star_ratings.models import Rating
+
+
+def photo_path(instance, filename):
+    _, extension = os.path.splitext(filename)
+
+    return "{directory}{basename}{ext}".format(
+        directory="avatars/",
+        basename=instance.username,
+        ext=extension
+    )
 
 
 class Manufacturer(models.Model):
@@ -78,7 +90,7 @@ class Driver(AbstractUser):
         default="default.png",
         null=True,
         blank=True,
-        upload_to="images"
+        upload_to=photo_path
     )
     license_number = models.CharField(max_length=8, unique=True)
     slug = models.SlugField(null=True, blank=True, max_length=100, unique=True)
